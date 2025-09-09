@@ -364,7 +364,7 @@
             }
             
             function displayStudentReport(selectedName) {
-                analysisResult.innerHTML = '';
+                analysisResult.innerHTML = ''; // Hapus analisis lama
                 const studentInfo = allStudentData.find(s => s['Nama Siswa'] === selectedName);
                 if (studentInfo) {
                     studentNameEl.textContent = studentInfo['Nama Siswa'] || '-';
@@ -478,11 +478,12 @@
                 const selectedName = studentSelector.value;
                 const apiKey = apiKeyInput.value;
                 if (!apiKey) {
-                    alert('API Key tidak valid.');
+                    analysisResult.innerHTML = `<p class="text-yellow-600 text-center">Analisis tidak dapat dibuat karena API Key tidak valid.</p>`;
                     return;
                 }
                 analysisResult.innerHTML = '';
                 analysisLoader.classList.remove('hidden');
+                analysisLoader.style.display = 'flex';
                 generateAnalysisBtn.disabled = true;
 
                 let notesText = `Berikut adalah catatan untuk siswa bernama ${selectedName}:\n\n`;
@@ -506,8 +507,8 @@
 
                 if (homeroomNotes.length === 0 && subjectNotesCount === 0) {
                     analysisResult.innerHTML = `<p class="text-gray-600 text-center">Tidak ada catatan untuk dianalisis.</p>`;
-                    analysisLoader.classList.add('hidden');
-                    generateAnalysisBtn.disabled = false;
+                    analysisLoader.style.display = 'none';
+                     generateAnalysisBtn.disabled = false;
                     return;
                 }
 
@@ -533,7 +534,7 @@
                     console.error("Error calling Gemini API:", error);
                     analysisResult.innerHTML = `<p class="text-red-500">Terjadi kesalahan. Pastikan API Key benar. Error: ${error.message}</p>`;
                 } finally {
-                    analysisLoader.classList.add('hidden');
+                    analysisLoader.style.display = 'none';
                     generateAnalysisBtn.disabled = false;
                 }
             }
@@ -548,7 +549,7 @@
             // --- Event Listeners ---
             studentSelector.addEventListener('change', (e) => displayStudentReport(e.target.value));
             generateAnalysisBtn.addEventListener('click', generateAnalysis);
-
+            
             printCurrentBtn.addEventListener('click', () => {
                 printableArea.innerHTML = generateFullReportHtml(studentSelector.value);
                 setTimeout(() => { window.print(); }, 100);
