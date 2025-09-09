@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Murid</title>
+    <title>Laporan Bulanan Murid</title>
     <!-- Menggunakan Tailwind CSS untuk styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Menggunakan Papa Parse untuk membaca file CSV -->
@@ -469,13 +469,26 @@
                 return html;
             }
 
-            function generateFullReportHtml(studentName) {
+            function generateFullReportHtml(studentName, includeAnalysis = false) {
                 const studentInfo = allStudentData.find(s => s['Nama Siswa'] === studentName);
                 const studentClass = studentInfo ? studentInfo['Kelas'] : '-';
                 const attendanceHtml = generateAttendanceHtml(studentName);
                 const homeroomNotesHtml = generateHomeroomNotesHtml(studentName);
                 const subjectNotesHtml = generateSubjectNotesHtml(studentName);
                 
+                let analysisSectionHtml = '';
+                if (includeAnalysis) {
+                    const analysisContent = analysisResult.innerHTML.trim() !== '' ? analysisResult.innerHTML : '<p class="text-gray-500 text-center">Analisis belum dibuat.</p>';
+                    analysisSectionHtml = `
+                        <section>
+                            <h3 class="text-xl font-bold mb-4 text-blue-700">D. Analisis</h3>
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                                <div class="text-left w-full prose max-w-none">${analysisContent}</div>
+                            </div>
+                        </section>
+                    `;
+                }
+
                 return `
                     <div class="page-break p-6 md:p-8 space-y-8">
                          <section class="border-b pb-6">
@@ -515,6 +528,7 @@
                                 </table>
                             </div>
                         </section>
+                        ${analysisSectionHtml}
                     </div>
                 `;
             }
@@ -596,7 +610,7 @@
             generateAnalysisBtn.addEventListener('click', generateAnalysis);
             
             printCurrentBtn.addEventListener('click', () => {
-                printableArea.innerHTML = generateFullReportHtml(studentSelector.value);
+                printableArea.innerHTML = generateFullReportHtml(studentSelector.value, true);
                 setTimeout(() => { window.print(); }, 100);
             });
 
@@ -604,7 +618,7 @@
                 printableArea.innerHTML = ''; 
                 allStudentData.forEach(student => {
                     if (student['Nama Siswa']) {
-                        printableArea.innerHTML += generateFullReportHtml(student['Nama Siswa']);
+                        printableArea.innerHTML += generateFullReportHtml(student['Nama Siswa'], false);
                     }
                 });
                 setTimeout(() => { window.print(); }, 100);
@@ -618,5 +632,4 @@
     </script>
 </body>
 </html>
-
 
