@@ -156,14 +156,20 @@
 
                         <section>
                             <h2 class="text-xl font-bold mb-4 text-blue-700">A. Persentase Kehadiran</h2>
-                            <div class="overflow-x-auto rounded-lg border border-gray-200">
-                                <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+                            <div class="rounded-lg border border-gray-200">
+                                <table class="w-full table-fixed divide-y-2 divide-gray-200 bg-white text-sm">
+                                    <colgroup>
+                                        <col style="width: 5%;">
+                                        <col style="width: 25%;">
+                                        <col style="width: 50%;">
+                                        <col style="width: 20%;">
+                                    </colgroup>
                                     <thead class="bg-gray-50">
                                         <tr>
-                                            <th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">No</th>
-                                            <th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Mata Pelajaran</th>
-                                            <th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Tanggal dan Keterangan Tidak Hadir</th>
-                                            <th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Persentase</th>
+                                            <th class="px-4 py-3 font-semibold text-left text-gray-900">No</th>
+                                            <th class="px-4 py-3 font-semibold text-left text-gray-900">Mata Pelajaran</th>
+                                            <th class="px-4 py-3 font-semibold text-left text-gray-900">Tanggal dan Keterangan Tidak Hadir</th>
+                                            <th class="px-4 py-3 font-semibold text-left text-gray-900">Persentase</th>
                                         </tr>
                                     </thead>
                                     <tbody id="attendanceBody" class="divide-y divide-gray-200"></tbody>
@@ -173,14 +179,20 @@
 
                         <section>
                             <h2 class="text-xl font-bold mb-4 text-blue-700">B. Catatan Wali Kelas</h2>
-                            <div class="overflow-x-auto rounded-lg border border-gray-200">
-                                <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+                            <div class="rounded-lg border border-gray-200">
+                                <table class="w-full table-fixed divide-y-2 divide-gray-200 bg-white text-sm">
+                                     <colgroup>
+                                        <col style="width: 5%;">
+                                        <col style="width: 20%;">
+                                        <col style="width: 37.5%;">
+                                        <col style="width: 37.5%;">
+                                    </colgroup>
                                     <thead class="bg-gray-50">
                                         <tr>
-                                            <th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">No</th>
-                                            <th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Tanggal</th>
-                                            <th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Pelanggaran</th>
-                                            <th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Catatan Wali Kelas</th>
+                                            <th class="px-4 py-3 font-semibold text-left text-gray-900">No</th>
+                                            <th class="px-4 py-3 font-semibold text-left text-gray-900">Tanggal</th>
+                                            <th class="px-4 py-3 font-semibold text-left text-gray-900">Pelanggaran</th>
+                                            <th class="px-4 py-3 font-semibold text-left text-gray-900">Catatan Wali Kelas</th>
                                         </tr>
                                     </thead>
                                     <tbody id="homeroomNotesBody" class="divide-y divide-gray-200"></tbody>
@@ -190,14 +202,20 @@
 
                         <section>
                             <h2 class="text-xl font-bold mb-4 text-blue-700">C. Catatan Guru Mata Pelajaran</h2>
-                            <div class="overflow-x-auto rounded-lg border border-gray-200">
-                                 <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+                            <div class="rounded-lg border border-gray-200">
+                                 <table class="w-full table-fixed divide-y-2 divide-gray-200 bg-white text-sm">
+                                     <colgroup>
+                                        <col style="width: 5%;">
+                                        <col style="width: 20%;">
+                                        <col style="width: 25%;">
+                                        <col style="width: 50%;">
+                                    </colgroup>
                                     <thead class="bg-gray-50">
                                         <tr>
-                                            <th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">No</th>
-                                            <th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Tanggal</th>
-                                            <th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Mata Pelajaran</th>
-                                            <th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Catatan Guru</th>
+                                            <th class="px-4 py-3 font-semibold text-left text-gray-900">No</th>
+                                            <th class="px-4 py-3 font-semibold text-left text-gray-900">Tanggal</th>
+                                            <th class="px-4 py-3 font-semibold text-left text-gray-900">Mata Pelajaran</th>
+                                            <th class="px-4 py-3 font-semibold text-left text-gray-900">Catatan Guru</th>
                                         </tr>
                                     </thead>
                                     <tbody id="subjectNotesBody" class="divide-y divide-gray-200"></tbody>
@@ -398,7 +416,12 @@
                         return `${date} (${absenceCode})`;
                     }).join(', ');
 
-                    html += `<tr><td class="whitespace-nowrap px-4 py-3 font-medium text-gray-900">${attendanceCounter}</td><td class="whitespace-nowrap px-4 py-3 text-gray-700">${subjectName}</td><td class="whitespace-nowrap px-4 py-3 text-gray-700">${absenceDetails || '-'}</td><td class="whitespace-nowrap px-4 py-3 text-gray-700">${percentage.toFixed(0)}%</td></tr>`;
+                    html += `<tr>
+                        <td class="px-4 py-3 font-medium text-gray-900">${attendanceCounter}</td>
+                        <td class="px-4 py-3 text-gray-700 break-words">${subjectName}</td>
+                        <td class="px-4 py-3 text-gray-700 break-words">${absenceDetails || '-'}</td>
+                        <td class="px-4 py-3 text-gray-700">${percentage.toFixed(0)}%</td>
+                    </tr>`;
                 });
 
                 if (attendanceCounter === 0) html = '<tr><td colspan="4" class="px-4 py-3 text-gray-500 text-center">Tidak ada data kehadiran.</td></tr>';
@@ -410,7 +433,12 @@
                  const studentHomeroomNotes = allHomeroomNotes.filter(note => note['Nama Siswa'] && note['Nama Siswa'].trim().toUpperCase() === selectedName.trim().toUpperCase());
                 if (studentHomeroomNotes.length > 0) {
                     studentHomeroomNotes.forEach((note, index) => {
-                        html += `<tr><td class="whitespace-nowrap px-4 py-3 font-medium text-gray-900">${index + 1}</td><td class="whitespace-nowrap px-4 py-3 text-gray-700">${note['Tanggal'] || '-'}</td><td class="whitespace-nowrap px-4 py-3 text-gray-700">${note['Pelanggaran'] || '-'}</td><td class="px-4 py-3 text-gray-700">${note['Catatan Wali Kelas'] || '-'}</td></tr>`;
+                        html += `<tr>
+                            <td class="px-4 py-3 font-medium text-gray-900">${index + 1}</td>
+                            <td class="px-4 py-3 text-gray-700">${note['Tanggal'] || '-'}</td>
+                            <td class="px-4 py-3 text-gray-700 break-words">${note['Pelanggaran'] || '-'}</td>
+                            <td class="px-4 py-3 text-gray-700 break-words">${note['Catatan Wali Kelas'] || '-'}</td>
+                        </tr>`;
                     });
                 } else {
                     html = '<tr><td colspan="4" class="px-4 py-3 text-gray-500 text-center">Tidak ada catatan.</td></tr>';
@@ -428,7 +456,12 @@
                         subjectNoteCounter++;
                         const date = record['Tanggal'] || record['tanggal'] || '-';
                         const subjectName = record['Mapel'] || record['Mata Pelajaran'] || '-';
-                        html += `<tr><td class="whitespace-nowrap px-4 py-3 font-medium text-gray-900">${subjectNoteCounter}</td><td class="whitespace-nowrap px-4 py-3 text-gray-700">${date}</td><td class="whitespace-nowrap px-4 py-3 text-gray-700">${subjectName}</td><td class="px-4 py-3 text-gray-700">${note}</td></tr>`;
+                        html += `<tr>
+                            <td class="px-4 py-3 font-medium text-gray-900">${subjectNoteCounter}</td>
+                            <td class="px-4 py-3 text-gray-700">${date}</td>
+                            <td class="px-4 py-3 text-gray-700 break-words">${subjectName}</td>
+                            <td class="px-4 py-3 text-gray-700 break-words">${note}</td>
+                        </tr>`;
                     }
                 });
 
@@ -454,20 +487,32 @@
                         </section>
                         <section>
                             <h3 class="text-xl font-bold mb-4 text-blue-700">A. Persentase Kehadiran</h3>
-                            <div class="overflow-x-auto rounded-lg border border-gray-200">
-                                <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm"><thead class="bg-gray-50"><tr><th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">No</th><th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Mata Pelajaran</th><th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Tanggal dan Keterangan Tidak Hadir</th><th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Persentase</th></tr></thead><tbody class="divide-y divide-gray-200">${attendanceHtml}</tbody></table>
+                            <div class="rounded-lg border border-gray-200">
+                                <table class="w-full table-fixed divide-y-2 divide-gray-200 bg-white text-sm">
+                                    <colgroup><col style="width: 5%;"><col style="width: 25%;"><col style="width: 50%;"><col style="width: 20%;"></colgroup>
+                                    <thead class="bg-gray-50"><tr><th class="px-4 py-3 font-semibold text-left text-gray-900">No</th><th class="px-4 py-3 font-semibold text-left text-gray-900">Mata Pelajaran</th><th class="px-4 py-3 font-semibold text-left text-gray-900">Tanggal dan Keterangan Tidak Hadir</th><th class="px-4 py-3 font-semibold text-left text-gray-900">Persentase</th></tr></thead>
+                                    <tbody class="divide-y divide-gray-200">${attendanceHtml}</tbody>
+                                </table>
                             </div>
                         </section>
                         <section>
                             <h3 class="text-xl font-bold mb-4 text-blue-700">B. Catatan Wali Kelas</h3>
-                            <div class="overflow-x-auto rounded-lg border border-gray-200">
-                                <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm"><thead class="bg-gray-50"><tr><th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">No</th><th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Tanggal</th><th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Pelanggaran</th><th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Catatan Wali Kelas</th></tr></thead><tbody class="divide-y divide-gray-200">${homeroomNotesHtml}</tbody></table>
+                            <div class="rounded-lg border border-gray-200">
+                                <table class="w-full table-fixed divide-y-2 divide-gray-200 bg-white text-sm">
+                                    <colgroup><col style="width: 5%;"><col style="width: 20%;"><col style="width: 37.5%;"><col style="width: 37.5%;"></colgroup>
+                                    <thead class="bg-gray-50"><tr><th class="px-4 py-3 font-semibold text-left text-gray-900">No</th><th class="px-4 py-3 font-semibold text-left text-gray-900">Tanggal</th><th class="px-4 py-3 font-semibold text-left text-gray-900">Pelanggaran</th><th class="px-4 py-3 font-semibold text-left text-gray-900">Catatan Wali Kelas</th></tr></thead>
+                                    <tbody class="divide-y divide-gray-200">${homeroomNotesHtml}</tbody>
+                                </table>
                             </div>
                         </section>
                         <section>
                             <h3 class="text-xl font-bold mb-4 text-blue-700">C. Catatan Guru Mata Pelajaran</h3>
-                            <div class="overflow-x-auto rounded-lg border border-gray-200">
-                                <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm"><thead class="bg-gray-50"><tr><th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">No</th><th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Tanggal</th><th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Mata Pelajaran</th><th class="whitespace-nowrap px-4 py-3 font-semibold text-left text-gray-900">Catatan Guru</th></tr></thead><tbody class="divide-y divide-gray-200">${subjectNotesHtml}</tbody></table>
+                            <div class="rounded-lg border border-gray-200">
+                                <table class="w-full table-fixed divide-y-2 divide-gray-200 bg-white text-sm">
+                                     <colgroup><col style="width: 5%;"><col style="width: 20%;"><col style="width: 25%;"><col style="width: 50%;"></colgroup>
+                                    <thead class="bg-gray-50"><tr><th class="px-4 py-3 font-semibold text-left text-gray-900">No</th><th class="px-4 py-3 font-semibold text-left text-gray-900">Tanggal</th><th class="px-4 py-3 font-semibold text-left text-gray-900">Mata Pelajaran</th><th class="px-4 py-3 font-semibold text-left text-gray-900">Catatan Guru</th></tr></thead>
+                                    <tbody class="divide-y divide-gray-200">${subjectNotesHtml}</tbody>
+                                </table>
                             </div>
                         </section>
                     </div>
